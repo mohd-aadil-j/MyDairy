@@ -1,0 +1,268 @@
+@import "tailwindcss" ;
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant krishna (&:is(.krishna *));
+@custom-variant shiva (&:is(.shiva *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-glow: var(--glow);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+/* Krishna theme (default) — peace, devotion, gold + peacock */
+:root,
+.krishna {
+  --radius: 1rem;
+  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --background: oklch(0.22 0.08 270);
+  --foreground: oklch(0.97 0.02 90);
+
+  --card: oklch(0.28 0.09 265 / 0.6);
+  --card-foreground: oklch(0.97 0.02 90);
+
+  --popover: oklch(0.26 0.09 265);
+  --popover-foreground: oklch(0.97 0.02 90);
+
+  --primary: oklch(0.82 0.16 85); /* gold */
+  --primary-foreground: oklch(0.22 0.08 270);
+
+  --secondary: oklch(0.55 0.15 175); /* peacock green */
+  --secondary-foreground: oklch(0.98 0.01 90);
+
+  --muted: oklch(0.32 0.06 270);
+  --muted-foreground: oklch(90.669% 0.18812 99.48);
+
+  --accent: oklch(0.65 0.18 300); /* soft violet */
+  --accent-foreground: oklch(0.98 0.01 90);
+
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.98 0.01 90);
+
+  --border: oklch(0.82 0.16 85 / 0.2);
+  --input: oklch(0.82 0.16 85 / 0.15);
+  --ring: oklch(0.82 0.16 85 / 0.5);
+
+  --gold: oklch(0.85 0.17 85);
+  --glow: oklch(0.82 0.16 85 / 0.45);
+
+  --gradient-bg: radial-gradient(ellipse at top, oklch(0.32 0.12 265) 0%, oklch(0.18 0.08 275) 60%, oklch(0.12 0.06 280) 100%);
+  --gradient-hero: linear-gradient(135deg, rgb(4, 94, 162) 0%, rgb(255, 244, 96) 55%, rgba(43, 249, 6, 0.6) 100%);
+  --gradient-card: linear-gradient(135deg, oklch(0.30 0.10 265 / 0.7), oklch(0.22 0.08 270 / 0.5));
+  --shadow-glow: 0 0 40px oklch(0.82 0.16 85 / 0.35), 0 0 80px oklch(0.55 0.15 175 / 0.2);
+  --shadow-card: 0 10px 40px -10px oklch(0.10 0.05 280 / 0.6);
+}
+
+.shiva {
+  --radius: 1rem;
+  --font-display: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --background: oklch(0.12 0.03 270);
+  --foreground: oklch(0.96 0.02 230);
+
+  --card: oklch(0.18 0.04 265 / 0.6);
+  --card-foreground: oklch(0.96 0.02 230);
+
+  --popover: oklch(0.16 0.04 265);
+  --popover-foreground: oklch(0.96 0.02 230);
+
+  --primary: oklch(0.88 0.10 220); /* moon white / cyan */
+  --primary-foreground: oklch(0.12 0.03 270);
+
+  --secondary: oklch(0.40 0.15 270); /* indigo */
+  --secondary-foreground: oklch(0.98 0.01 230);
+
+  --muted: oklch(0.20 0.03 270);
+  --muted-foreground: oklch(95.052% 0.00808 254.089);
+
+  --accent: oklch(0.78 0.16 200); /* cyan glow */
+  --accent-foreground: oklch(0.12 0.03 270);
+
+  --destructive: oklch(0.65 0.22 20);
+  --destructive-foreground: oklch(0.98 0.01 230);
+
+  --border: oklch(0.78 0.16 200 / 0.18);
+  --input: oklch(0.78 0.16 200 / 0.12);
+  --ring: oklch(0.78 0.16 200 / 0.5);
+
+  --gold: oklch(0.88 0.10 220);
+  --glow: oklch(0.78 0.16 200 / 0.45);
+
+  --gradient-bg: radial-gradient(ellipse at top, oklch(0.20 0.06 275) 0%, oklch(0.10 0.03 270) 55%, oklch(0.05 0.01 270) 100%);
+  --gradient-hero: linear-gradient(135deg, oklch(0.40 0.15 270) 0%, oklch(0.78 0.16 200) 60%, oklch(0.88 0.10 220) 100%);  --gradient-card: linear-gradient(135deg, oklch(0.22 0.05 270 / 0.7), oklch(0.12 0.03 270 / 0.6));
+  --shadow-glow: 0 0 50px oklch(0.78 0.16 200 / 0.4), 0 0 100px oklch(0.40 0.15 270 / 0.3);
+  --shadow-card: 0 10px 40px -10px oklch(0.02 0.01 270 / 0.8);
+}
+
+.shiva .shiva-page-bg {
+  width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+}
+
+.shiva .shiva-login-bg {
+  background-image: url("/shiva1.jpg");
+}
+
+.shiva .shiva-signup-bg {
+  background-image: url("/shiva2.jpg");
+}
+
+.shiva .shiva-dashboard-bg {
+  background-image: url("/shiva3.jpg");
+}
+
+.shiva .shiva-landing-bg {
+  background-image: url("/shiva4.jpg");
+}
+
+.krishna .krishna-page-bg {
+  width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+}
+
+.krishna .krishna-login-bg {
+  background-image: url("/krish2.jpg");
+}
+
+.krishna .krishna-signup-bg {
+  background-image: url("/krish6.jpg");
+}
+
+.krishna .krishna-dashboard-bg {
+  background-image: url("/krish1.jpg");
+}
+
+.krishna .krishna-landing-bg {
+  background-image: url("/krish4.jpg");
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+
+  html, body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    min-height: 100vh;
+  }
+
+  body {
+    background-image: var(--gradient-bg);
+    background-attachment: fixed;
+    transition: background-color 0.6s ease, color 0.6s ease;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection { background: var(--primary); color: var(--primary-foreground); }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900;
+  }
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-card { background: var(--gradient-card); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .glass {
+    background: var(--gradient-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+  }
+  .divine-glow {
+    box-shadow: 0 0 0 1px var(--border), 0 0 30px var(--glow);
+  }
+}
+
+/* Animations */
+@keyframes float-up {
+  0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+  10% { opacity: 1; transform: translateY(90vh) translateX(10px) scale(1); }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-10vh) translateX(-20px) scale(0.6); opacity: 0; }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px var(--glow); }
+  50% { box-shadow: 0 0 50px var(--glow), 0 0 80px var(--glow); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -30px); }
+}
+
+.animate-float { animation: float-up linear infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.7s ease-out both; }
+.animate-fade-in { animation: fade-in 0.6s ease-out both; }
+.animate-slow-spin { animation: slow-spin 60s linear infinite; }
+.animate-drift { animation: drift 12s ease-in-out infinite; }
+
+.hover-lift {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+}
