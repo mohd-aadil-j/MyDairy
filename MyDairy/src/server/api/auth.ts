@@ -1,4 +1,5 @@
 import { getDb } from '@/integrations/mongodb/client';
+import { ObjectId } from 'mongodb';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
@@ -67,6 +68,37 @@ export async function fetch(request: Request) {
       status: 200,
       headers: { 'content-type': 'application/json', 'set-cookie': createSessionCookie(token) },
     });
+  }
+
+  if (path === '/api/auth/change-password' && request.method === 'POST') {
+    const cookieHeader = request.headers.get('cookie') || '';
+    const parsed = cookie.parse(cookieHeader || '');
+    const token = parsed[TOKEN_NAME];
+    if (!token) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+    let decoded: any;
+    try {
+      decoded = jwt.verify(token, JWT_SECRET) as any;
+    } catch {
+      return jsonResponse({ error: 'Unauthorized' }, 401);
+    }
+
+    const { currentPassword, newPassword } = await request.json();
+    if (!currentPassword || !newPassword) return jsonResponse({ error: 'Missing password fields' }, 400);
+    if (newPassword.length < 6) return jsonResponse({ error: 'New password must be at least 6 characters' }, 400);
+
+    const db = await getDb();
+    const users = db.collection('users');
+    const user = await users.findOne({ _id: new ObjectId(decoded.id) });
+    if (!user) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+    const ok = await bcrypt.compare(currentPassword, user.password as string);
+    if (!ok) return jsonResponse({ error: 'Invalid current password' }, 401);
+
+    const hashed = await bcrypt.hash(newPassword, 10);
+    await users.updateOne({ _id: user._id }, { $set: { password: hashed } });
+
+    return jsonResponse({ message: 'Password updated successfully' });
   }
 
   if (path === '/api/auth/logout' && request.method === 'POST') {

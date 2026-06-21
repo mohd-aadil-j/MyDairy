@@ -42,6 +42,12 @@ export function Navbar() {
               >
                 Dashboard
               </Link>
+              <Link
+                to="/change-password"
+                className="hidden sm:inline-flex px-4 py-2 rounded-full text-sm font-medium hover:text-primary transition-colors"
+              >
+                Change password
+              </Link>
               <motion.button
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.95 }}

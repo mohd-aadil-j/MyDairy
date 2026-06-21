@@ -16,6 +16,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppNewRouteImport } from './routes/_app/new'
 import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
 import { Route as AppEntriesIdRouteImport } from './routes/_app/entries/$id'
+import { Route as AppChangePasswordRouteImport } from './routes/_app/change-password'
 
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
@@ -46,6 +47,12 @@ const AppDashboardRoute = AppDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AppRoute,
 } as any)
+const AppChangePasswordRoute = AppChangePasswordRouteImport.update({
+  id: '/change-password',
+  path: '/change-password',
+  getParentRoute: () => AppRoute,
+} as any)
+
 const AppEntriesIdRoute = AppEntriesIdRouteImport.update({
   id: '/entries/$id',
   path: '/entries/$id',
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/dashboard': typeof AppDashboardRoute
   '/new': typeof AppNewRoute
+  '/change-password': typeof AppChangePasswordRoute
   '/entries/$id': typeof AppEntriesIdRoute
 }
 export interface FileRoutesByTo {
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/dashboard': typeof AppDashboardRoute
   '/new': typeof AppNewRoute
+  '/change-password': typeof AppChangePasswordRoute
   '/entries/$id': typeof AppEntriesIdRoute
 }
 export interface FileRoutesById {
@@ -76,13 +85,14 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/_app/dashboard': typeof AppDashboardRoute
   '/_app/new': typeof AppNewRoute
+  '/_app/change-password': typeof AppChangePasswordRoute
   '/_app/entries/$id': typeof AppEntriesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/signup' | '/dashboard' | '/new' | '/entries/$id'
+  fullPaths: '/' | '/login' | '/signup' | '/dashboard' | '/new' | '/change-password' | '/entries/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/signup' | '/dashboard' | '/new' | '/entries/$id'
+  to: '/' | '/login' | '/signup' | '/dashboard' | '/new' | '/change-password' | '/entries/$id'
   id:
     | '__root__'
     | '/'
@@ -91,6 +101,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/_app/dashboard'
     | '/_app/new'
+    | '/_app/change-password'
     | '/_app/entries/$id'
   fileRoutesById: FileRoutesById
 }
@@ -145,6 +156,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/change-password': {
+      id: '/_app/change-password'
+      path: '/change-password'
+      fullPath: '/change-password'
+      preLoaderRoute: typeof AppChangePasswordRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/entries/$id': {
       id: '/_app/entries/$id'
       path: '/entries/$id'
@@ -158,12 +176,14 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppDashboardRoute: typeof AppDashboardRoute
   AppNewRoute: typeof AppNewRoute
+  AppChangePasswordRoute: typeof AppChangePasswordRoute
   AppEntriesIdRoute: typeof AppEntriesIdRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppDashboardRoute: AppDashboardRoute,
   AppNewRoute: AppNewRoute,
+  AppChangePasswordRoute: AppChangePasswordRoute,
   AppEntriesIdRoute: AppEntriesIdRoute,
 }
 
